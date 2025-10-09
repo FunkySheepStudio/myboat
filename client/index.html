@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme">
+  <title>My boats managment app.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+  <link rel="stylesheet" href="./libs/vuetify.min.css"/>
+  <link rel="stylesheet" href="./libs/materialdesignicons.min.css"/>
+  <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+</head>
+
+<div id="app" />
+</html>
+
+<script src="./libs/vue.global.prod.min.js"></script>
+<script src="./libs/vue3-sfc-loader.js"></script>
+<script src="./libs/vuetify.min.js"></script>
+<script src="./libs/vue-router.global.js"></script>
+<script src="./libs/html5-qrcode.js"></script>
+<script src="./modules/store.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+  }
+
+  const { createApp, watch } = Vue
+  const { loadModule } = window['vue3-sfc-loader']
+
+  const vuetify = Vuetify.createVuetify()
+  
+  const { createRouter, createWebHistory } = VueRouter
+
+  const options = {
+    moduleCache: {
+      vue: Vue
+    },
+    async getFile(url) {
+      
+      const res = await fetch(url);
+      if ( !res.ok )
+        throw Object.assign(new Error(res.statusText + ' ' + url), { res });
+      return {
+        getContentData: asBinary => asBinary ? res.arrayBuffer() : res.text(),
+      }
+    },
+    addStyle(textContent) {
+      const style = Object.assign(document.createElement('style'), { textContent });
+      const ref = document.head.getElementsByTagName('style')[0] || null;
+      document.head.insertBefore(style, ref);
+    },
+  }
+
+  const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+      { path: '/myboats', name: 'My Boats', component: () => loadModule('/pages/myboats.vue', options) },
+      { path: '/', redirect: { path: "/myboats" } }
+    ],
+  })
+
+  createApp({
+    components: {
+      'defaultLayout': Vue.defineAsyncComponent( () => loadModule('/layouts/index.vue', options) )
+    },
+    data() {
+      return {}
+    },
+    template: '<defaultLayout/>'
+  })
+  .use(vuetify)
+  .use(router)
+  .mount('#app')
+</script>
