@@ -1,4 +1,9 @@
 <template>
+  <takePicture
+    v-if="showTakePicture"
+    :show="showTakePicture"
+    @close-event="showTakePicture = false"
+  />
   <v-card
     v-for="boat in store.DB.Boats.All"
   >
@@ -16,6 +21,11 @@
         icon="mdi-delete"
         @click="DeleteBoat(boat.id)"
       />
+      <v-btn
+        color="blue"
+        icon="mdi-camera"
+        @click="showTakePicture = true"
+      />
     </template>
   </v-card>
   <v-fab
@@ -30,10 +40,12 @@
 <script>
 module.exports = {
   components: {
+    'takePicture': Vue.defineAsyncComponent( () => loadModule('./components/organisms/take_picture.vue', options)),
   },
   data() {
     return {
-      store
+      store,
+      showTakePicture: false
     }
   },
   methods: {
