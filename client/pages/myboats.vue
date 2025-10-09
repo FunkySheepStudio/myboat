@@ -2,10 +2,23 @@
   <v-card
     v-for="boat in store.DB.Boats.All"
   >
-    {{ boat }}
+    <template v-slot:title>
+      <v-text-field
+            hint="Enter the name of your boat"
+            label="Name of the boat"
+            v-model="boat.name"
+            @update:modelValue="AddBoat(boat)"
+      />
+    </template>
+    <template v-slot:actions>
+      <v-btn
+        color="red"
+        icon="mdi-delete"
+        @click="DeleteBoat(boat.id)"
+      />
+    </template>
   </v-card>
   <v-fab
-    absolute="true"
     app="true"
     color="blue"
     location="bottom right"
@@ -24,9 +37,13 @@ module.exports = {
     }
   },
   methods: {
-    AddBoat()
+    AddBoat(boat)
     {
-      store.DB.Boats.Add()
+      store.DB.Boats.Add(boat)
+    },
+    DeleteBoat(id)
+    {
+      store.DB.Boats.Delete(id)
     }
   }
 }

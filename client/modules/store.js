@@ -1,4 +1,4 @@
-const { reactive } = Vue
+const { reactive, toRaw } = Vue
 
 const store = reactive(
     {
@@ -45,18 +45,24 @@ const store = reactive(
 
                 open.onupgradeneeded = function() {
                     store.DB.instance = open.result;
-                    store.DB.instance.createObjectStore("boats", {keyPath: "id", autoIncrement: true });
+                    let boats = store.DB.instance.createObjectStore("boats", {
+                        keyPath: "id",
+                        autoIncrement: true 
+                    });
+                    boats.createIndex("name", "name", { unique: false });
                 };
             },
             Boats: {
                 All: [],
                 Add: (boat) =>
                 {
-                    let addedBoat = boat ? boat : {}
+                    let addedBoat = boat? {...boat} : {}
+
                     let transaction = store.DB.instance.transaction(['boats'], 'readwrite');
                     let objectStore = transaction.objectStore('boats');
                     
-                    let request = objectStore.add(addedBoat);
+                    console.log(addedBoat)
+                    let request = objectStore.put(addedBoat);
 
                     request.onsuccess = function(event) {
                         store.DB.Boats.Update()
@@ -64,6 +70,21 @@ const store = reactive(
 
                     request.onerror = function() {
                         console.log('Error adding boat');
+                    };
+                },
+                Delete: (id) =>
+                {
+                    let transaction = store.DB.instance.transaction(['boats'], 'readwrite');
+                    let objectStore = transaction.objectStore('boats');
+                    
+                    let request = objectStore.delete(id);
+
+                    request.onsuccess = function(event) {
+                        store.DB.Boats.Update()
+                    };
+
+                    request.onerror = function() {
+                        console.log('Error deleting boat');
                     };
                 },
                 Update: () =>
