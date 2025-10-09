@@ -4,7 +4,17 @@
       width="auto"
     >
     <v-card>
-      <video ref="myVideo" :srcObject="stream" autoplay></video>
+      <v-file-input
+        label="Import a picture"
+        accept="image/*"
+        v-model="file"
+        @change="Upload"
+      />
+      <video
+        v-show="stream"
+        ref="myVideo" :srcObject="stream"
+        autoplay>
+      </video>
       <canvas
         ref="myCanvas"
         :width="width"
@@ -12,9 +22,15 @@
       />
       <template v-slot:actions>
         <v-btn
-            color="#373CF5"
+            v-show="stream"
+            color="green"
             icon="mdi-camera"
             @click='TakePicture()'
+        />
+        <v-btn
+            color="blue"
+            icon="mdi-image-plus"
+            @click='Save()'
         />
       </template>
     </v-card>
@@ -48,7 +64,14 @@
                     facingMode: 'environment',
                 },
             }
-            stream.value = await navigator.mediaDevices.getUserMedia(constraints)
+            navigator.mediaDevices.getUserMedia(constraints)
+            .then(function (mediaStream) {
+              stream.value = mediaStream
+            })
+            .catch(function (err) {
+              console.log("No media, file selector only")
+            });
+
             myContext.value = myCanvas.value.getContext('2d');
         })
 
@@ -59,13 +82,13 @@
             stream
         }
     },
-    /*data() {
+    data() {
       return {
-        stream: null
+        file: null
       }
     },
     mounted () {
-    },*/
+    },
     computed: {
       isActive: {
         get: function() {
@@ -76,10 +99,38 @@
         }
       }
     },
-    methods: {
-        TakePicture() {
-            this.myContext.drawImage(this.myVideo, 0, 0, 100, 100);
-        }
+    methods: 
+    {
+      TakePicture() {
+          this.myContext.drawImage(this.myVideo, 0, 0, 100, 100);
+      },
+      Upload()
+      {
+        var reader = new FileReader();
+        reader.addEventListener("load",
+        () => {
+          const blob = reader.result ;
+          const image = new Image() ;
+          image.src = blob ;
+          image.addEventListener('load', () => {
+            this.myContext.drawImage(image, 0,0, 100,100);
+          });
+        }, false)
+        reader.readAsDataURL(this.file);
+      },
+      Save()
+      {
+        this.myCanvas.toBlob((img) => {
+          var reader = new FileReader();
+            reader.onload = (event) => {
+              var data = event.target.result;
+
+              this.$emit('add-img', data)
+          };
+          // Convert Blob into DataURL string
+          reader.readAsDataURL(img);
+        })
+      }
     }
   }
 </script>

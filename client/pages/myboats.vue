@@ -3,6 +3,7 @@
     v-if="showTakePicture"
     :show="showTakePicture"
     @close-event="showTakePicture = false"
+    @add-img="AddImg"
   />
   <v-card
     v-for="boat in store.DB.Boats.All"
@@ -15,16 +16,22 @@
             @update:modelValue="AddBoat(boat)"
       />
     </template>
+    <v-carousel>
+      <v-carousel-item
+        v-for="img in boat.imgs"
+        :src="img"
+      ></v-carousel-item>
+    </v-carousel>
     <template v-slot:actions>
-      <v-btn
-        color="red"
-        icon="mdi-delete"
-        @click="DeleteBoat(boat.id)"
-      />
       <v-btn
         color="blue"
         icon="mdi-camera"
-        @click="showTakePicture = true"
+        @click="ShowPictureModal(boat.id)"
+      />
+        <v-btn
+        color="red"
+        icon="mdi-delete"
+        @click="DeleteBoat(boat.id)"
       />
     </template>
   </v-card>
@@ -45,7 +52,8 @@ module.exports = {
   data() {
     return {
       store,
-      showTakePicture: false
+      showTakePicture: false,
+      currentBoat: 0
     }
   },
   methods: {
@@ -56,6 +64,15 @@ module.exports = {
     DeleteBoat(id)
     {
       store.DB.Boats.Delete(id)
+    },
+    AddImg(event)
+    {
+      store.DB.Boats.AddImg(this.currentBoat, event)
+    },
+    ShowPictureModal(boatId)
+    {
+      this.currentBoat=boatId
+      this.showTakePicture = true
     }
   }
 }

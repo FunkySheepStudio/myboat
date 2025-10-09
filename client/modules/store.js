@@ -50,6 +50,13 @@ const store = reactive(
                         autoIncrement: true 
                     });
                     boats.createIndex("name", "name", { unique: false });
+
+                    let boats_imgs = store.DB.instance.createObjectStore("boats_imgs", {
+                        keyPath: "id",
+                        autoIncrement: true 
+                    });
+                    boats_imgs.createIndex("boatId", "boatId", { unique: false });
+                    boats_imgs.createIndex("imgBlob", "imgBlob", { unique: false });
                 };
             },
             Boats: {
@@ -61,8 +68,27 @@ const store = reactive(
                     let transaction = store.DB.instance.transaction(['boats'], 'readwrite');
                     let objectStore = transaction.objectStore('boats');
                     
-                    console.log(addedBoat)
                     let request = objectStore.put(addedBoat);
+
+                    request.onsuccess = function(event) {
+                        store.DB.Boats.Update()
+                    };
+
+                    request.onerror = function() {
+                        console.log('Error adding boat');
+                    };
+                },
+                AddImg: (boatId, imgBlob) =>
+                {
+                    let addedBoatImg = {
+                      boatId,
+                      imgBlob
+                    }
+
+                    let transaction = store.DB.instance.transaction(['boats_imgs'], 'readwrite');
+                    let objectStore = transaction.objectStore('boats_imgs');
+                    
+                    let request = objectStore.put(addedBoatImg);
 
                     request.onsuccess = function(event) {
                         store.DB.Boats.Update()
@@ -84,7 +110,7 @@ const store = reactive(
                     };
 
                     request.onerror = function() {
-                        console.log('Error deleting boat');
+                      console.log('Error deleting boat');
                     };
                 },
                 Update: () =>
@@ -95,6 +121,30 @@ const store = reactive(
 
                     request.onsuccess = function(event) {
                         store.DB.Boats.All = event.target.result
+                        store.DB.Boats.UpdateImgs()
+                    };
+
+                    request.onerror = function() {
+                        console.log('Error listing Boats');
+                    };
+                },
+                UpdateImgs: () =>
+                {
+                    let transaction = store.DB.instance.transaction(['boats_imgs'], 'readwrite');
+                    let objectStore = transaction.objectStore('boats_imgs');
+                    let request = objectStore.getAll()
+
+                    request.onsuccess = (event) => {
+                      for (let index = 0; index < event.target.result.length; index++) {
+                          const img = event.target.result[index];
+                          let boat = store.DB.Boats.All.find(boat => boat.id === img.boatId)
+                          if (!boat.imgs)
+                          {
+                            boat.imgs = []
+                          }
+
+                          boat.imgs.push(img.imgBlob)
+                      }
                     };
 
                     request.onerror = function() {
