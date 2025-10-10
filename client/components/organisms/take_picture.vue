@@ -16,9 +16,10 @@
         autoplay>
       </video>
       <canvas
+        hidden
         ref="myCanvas"
-        :width="800"
-        :height="450"
+        width="800"
+        height="450"
       />
       <template v-slot:actions>
         <v-btn
@@ -26,11 +27,6 @@
             color="green"
             icon="mdi-camera"
             @click='TakePicture()'
-        />
-        <v-btn
-            color="blue"
-            icon="mdi-image-plus"
-            @click='Save()'
         />
       </template>
     </v-card>
@@ -102,7 +98,8 @@
     methods: 
     {
       TakePicture() {
-          this.myContext.drawImage(this.myVideo, 0, 0, 800, 450);
+        this.myContext.drawImage(this.myVideo, 0, 0, 800, 450);
+        this.Save()
       },
       Upload()
       {
@@ -112,8 +109,9 @@
           const blob = reader.result ;
           const image = new Image() ;
           image.src = blob ;
-          image.addEventListener('load', () => {
+          image.addEventListener('load', async  () => {
             this.myContext.drawImage(image, 0,0, 800, 450);
+            this.Save()
           });
         }, false)
         reader.readAsDataURL(this.file);

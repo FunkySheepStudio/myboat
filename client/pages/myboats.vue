@@ -16,22 +16,47 @@
         >
           <v-card
             class="ma-2 pa-2"
+            color="#00CED1"
+            variant="outlined"
           >
-            <template v-slot:title>
-              <v-text-field
+            <v-card-item>
+              <v-card-title>
+                <v-text-field
                     hint="Enter the name of your boat"
                     label="Name of the boat"
                     v-model="boat.name"
                     @update:modelValue="AddBoat(boat)"
                     density="compact"
-              />
-            </template>
+                />
+              </v-card-title>
+            </v-card-item>
             <v-carousel
               v-model="boat.selectedImg"
-              transition-duration="700"
+              transition-duration="400"
               crossfade
-              height="60vmin"
+              height="50vmin"
+              hide-delimiters
             >
+              <template v-slot:prev="{ props }">
+                <v-btn
+                  color="black"
+                  variant="outlined"
+                  icon="mdi-arrow-left-thick"
+                  size="small"
+                  style="opacity: 50%; position: absolute; left: 5%;"
+                  @click="props.onClick"
+                  />
+              </template>
+              <template v-slot:next="{ props }">
+                <v-btn
+                  color="black"
+                  variant="outlined"
+                  icon="mdi-arrow-right-thick"
+                  size="small"
+                  style="opacity: 50%; position: absolute; right: 5%;"
+                  @click="props.onClick"
+                />
+              </template>
               <v-carousel-item
                 v-for="(img, i) in boat.imgs"
                 :key="i"
@@ -90,6 +115,7 @@ module.exports = {
     AddImg(event)
     {
       store.DB.Boats.AddImg(this.currentBoat, event)
+      this.showTakePicture = false
     },
     ShowPictureModal(boatId)
     {
