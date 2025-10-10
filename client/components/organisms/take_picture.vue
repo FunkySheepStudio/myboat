@@ -4,19 +4,18 @@
       width="auto"
     >
     <v-card>
-      <v-file-input
+      <!--<v-file-input
         label="Import a picture"
         accept="image/*"
         v-model="file"
         @change="Upload"
-      />
+      />-->
       <video
-        v-show="stream"
+        hidden
         ref="myVideo" :srcObject="stream"
         autoplay>
       </video>
       <canvas
-        hidden
         ref="myCanvas"
         width="800"
         height="450"
@@ -60,15 +59,23 @@
                     facingMode: 'environment',
                 },
             }
+            myContext.value = myCanvas.value.getContext('2d');
+
+            myContext.value.filter = 'contrast(1.3) saturate(1.2)'
+            function updateCanvas() {
+              myContext.value.drawImage(myVideo.value, 0, 0, myCanvas.value.width, myCanvas.value.height);
+              window.requestAnimationFrame(updateCanvas);
+            }
+              
+            window.requestAnimationFrame(updateCanvas);
+
             navigator.mediaDevices.getUserMedia(constraints)
             .then(function (mediaStream) {
               stream.value = mediaStream
             })
             .catch(function (err) {
-              console.log("No media, file selector only")
+              console.log(err)
             });
-
-            myContext.value = myCanvas.value.getContext('2d');
         })
 
         return {
@@ -98,7 +105,7 @@
     methods: 
     {
       TakePicture() {
-        this.myContext.drawImage(this.myVideo, 0, 0, 800, 450);
+        //this.myContext.drawImage(this.myVideo, 0, 0, 800, 450);
         this.Save()
       },
       Upload()

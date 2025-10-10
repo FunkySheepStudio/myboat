@@ -68,6 +68,11 @@
             </v-carousel>
             <template v-slot:actions>
               <v-btn
+                :color="store.DB.Boats.currentID === boat.id ? 'green' : 'black'"
+                icon="mdi-check-bold"
+                @click="store.DB.Boats.currentID = boat.id"
+              />
+              <v-btn
                 color="blue"
                 icon="mdi-camera"
                 @click="ShowPictureModal(boat.id)"

@@ -1,6 +1,9 @@
 <template>
     <v-bottom-navigation>
-      <v-btn value="boats">
+      <v-btn
+        value="boats"
+        @click="$router.push('myboats')"
+      >
           <v-icon
             color="#00CED1"
           >
@@ -9,7 +12,10 @@
           <span>Boats</span>
       </v-btn>
 
-      <v-btn value="maneuvers">
+      <v-btn
+        value="maneuvers"
+        @click="$router.push('maneuvers')"
+      >
           <v-icon
             color="#1E90FF"
           >

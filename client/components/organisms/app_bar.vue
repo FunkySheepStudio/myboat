@@ -2,6 +2,16 @@
   <v-app-bar
     density="compact"
   >
+    <div
+      v-if="store.DB.Boats.Current()"
+    >
+      <v-icon
+        color="blue"
+      >
+        mdi-sail-boat
+      </v-icon>
+      <b>{{ store.DB.Boats.Current().name }}</b>
+    </div>
     <template v-slot:append>
       <v-icon
         v-show="!store.Server.online"

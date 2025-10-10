@@ -57,6 +57,7 @@
     history: createWebHistory(),
     routes: [
       { path: '/myboats', name: 'My Boats', component: () => loadModule('/pages/myboats.vue', options) },
+      { path: '/maneuvers', name: 'The Maneuvers', component: () => loadModule('/pages/maneuvers.vue', options) },
       { path: '/', redirect: { path: "/myboats" } }
     ],
   })
