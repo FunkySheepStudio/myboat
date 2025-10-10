@@ -17,8 +17,8 @@
       </video>
       <canvas
         ref="myCanvas"
-        :width="width"
-        :height="height"
+        :width="800"
+        :height="450"
       />
       <template v-slot:actions>
         <v-btn
@@ -102,7 +102,7 @@
     methods: 
     {
       TakePicture() {
-          this.myContext.drawImage(this.myVideo, 0, 0, 100, 100);
+          this.myContext.drawImage(this.myVideo, 0, 0, 800, 450);
       },
       Upload()
       {
@@ -113,7 +113,7 @@
           const image = new Image() ;
           image.src = blob ;
           image.addEventListener('load', () => {
-            this.myContext.drawImage(image, 0,0, 100,100);
+            this.myContext.drawImage(image, 0,0, 800, 450);
           });
         }, false)
         reader.readAsDataURL(this.file);

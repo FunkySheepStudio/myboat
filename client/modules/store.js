@@ -140,6 +140,7 @@ const store = reactive(
                           let boat = store.DB.Boats.All.find(boat => boat.id === img.boatId)
                           if (!boat.imgs)
                           {
+                            boat.selectedImg = 0
                             boat.imgs = []
                           }
 
