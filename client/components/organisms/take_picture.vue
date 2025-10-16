@@ -18,7 +18,7 @@
       <canvas
         ref="myCanvas"
         width="800"
-        height="450"
+        height="600"
       />
       <template v-slot:actions>
         <v-btn
@@ -54,20 +54,43 @@
             let constraints = {
                 audio: false,
                 video: {
-                    width: { min: 1024, ideal: 1280, max: 1920 },
-                    height: { min: 576, ideal: 720, max: 1080 },
+                    width: { min: 800 },
+                    height: { min: 600 },
                     facingMode: 'environment',
                 },
             }
             myContext.value = myCanvas.value.getContext('2d');
 
             myContext.value.filter = 'contrast(1.3) saturate(1.2)'
+            myContext.value.fillStyle = "black";
+            myContext.value.fillRect(0, 0, 800, 600);
             function updateCanvas() {
-              myContext.value.drawImage(myVideo.value, 0, 0, myCanvas.value.width, myCanvas.value.height);
+
+              var ratio = Math.min(800 / myVideo.value.videoWidth, 600 / myVideo.value.videoHeight);
+              let pictureWidth = myVideo.value.videoWidth * ratio
+              let pictureHeight = myVideo.value.videoHeight * ratio
+
+              myContext.value.drawImage(
+                myVideo.value,
+                (800 - pictureWidth) / 2 ,
+                (600 - pictureHeight) / 2,
+                pictureWidth,
+                pictureHeight
+              );
               window.requestAnimationFrame(updateCanvas);
             }
               
             window.requestAnimationFrame(updateCanvas);
+
+            navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+              devices.forEach(device => {
+                if (device.kind === "videoinput")
+                {
+                  console.log(device.getCapabilities()) 
+                }
+              });
+            })
 
             navigator.mediaDevices.getUserMedia(constraints)
             .then(function (mediaStream) {
@@ -117,7 +140,7 @@
           const image = new Image() ;
           image.src = blob ;
           image.addEventListener('load', async  () => {
-            this.myContext.drawImage(image, 0,0, 800, 450);
+            this.myContext.drawImage(image, 0,0, this.myVideo.value.videoWidth, this.myVideo.value.videoHeight);
             this.Save()
           });
         }, false)

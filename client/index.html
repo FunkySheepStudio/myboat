@@ -56,15 +56,16 @@
   const router = createRouter({
     history: createWebHistory(),
     routes: [
+      { path: '/index', name: 'My Boats', component: () => loadModule('/pages/index.vue', options) },
       { path: '/myboats', name: 'My Boats', component: () => loadModule('/pages/myboats.vue', options) },
       { path: '/maneuvers', name: 'The Maneuvers', component: () => loadModule('/pages/maneuvers.vue', options) },
-      { path: '/', redirect: { path: "/myboats" } }
+      { path: '/', name: 'My Boats', component: () => loadModule('/pages/index.vue', options) }
     ],
   })
 
   createApp({
     components: {
-      'defaultLayout': Vue.defineAsyncComponent( () => loadModule('/layouts/index.vue', options) )
+      'defaultLayout': Vue.defineAsyncComponent( () => loadModule('/layouts/ux.vue', options) )
     },
     data() {
       return {}
