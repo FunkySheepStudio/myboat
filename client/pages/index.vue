@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div
-                    class="content d-flex"
+                    class="content d-flex flex-column"
                     style="overflow: auto;"
                 >
                     <div
@@ -238,7 +238,7 @@ module.exports = {
     .page {
         height: 100vh;
         width: 100%;
-        background-color: #5A6566;
+        background: radial-gradient(circle at bottom, #ffa27d, #bec4ff);
         padding: 1vh;
     }
 
@@ -251,60 +251,65 @@ module.exports = {
         border-bottom-left-radius: 1vh;
         border-bottom-right-radius: 1vh;
         background-color: #60DFE6;
-        margin-bottom: 1.5vh;
+        margin-bottom: 2vh;
+        outline: solid;
     }
 
     .menu-left {
         height: 20vh;
         width: 10vw;
         border-bottom-left-radius: 1vh;
-        margin-bottom: 1.5vh;
     }
 
     .button {
         height: 25px;
         width: 25px;
+        margin: 5px;
+        color: white;
     }
 
     .content
     {
+        height: 20vh;
         width: 86vw;
     }
 
     .next {
         height: 20vh;
+        border-bottom-right-radius: 1vh;
     }
 
     .boats {
-        background-color: #60DFE6;
+        background-color:#8CFFFE;
     }
 
     .maneuvers {
-        background-color: #CAE660;
+        background-color: #8CDDFF;
     }
 
     .maintenance {
-        background-color: #B760E6;
+        background-color: #9AFCFB;
+        
     }
 
     .crew {
-        background-color: #E69560;
+        background-color: #8CFFD6;
     }
 
     .member {
-        min-width: 10vh;
-        height: 19vh;
+        min-height: 9vh;
+        max-width: 81vw;
         margin: 0.5vh;
-        background-color: #60DFE6;
+        background-color: grey;
     }
 
     .title {
         height: 3vh;
         text-align: center;
-        font-size: larger;
+        font-size: 2vh;
         text-transform: uppercase;
         font-weight: bolder;
         color: white;
-        background-color: black;
+        background-color: #607680;
     }
 </style>
