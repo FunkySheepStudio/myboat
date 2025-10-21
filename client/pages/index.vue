@@ -106,10 +106,16 @@
                     <div
                         class="member"
                     >
+                        <user
+                            style="width: 8vh; height: 8vh;"
+                        />
                     </div>
                     <div
                         class="member"
                     >
+                        <user
+                            style="width: 8vh; height: 8vh;"
+                        />
                     </div>
                     <div
                         class="member"
@@ -225,6 +231,7 @@
 <script>
 module.exports = {
   components: {
+    'user': Vue.defineAsyncComponent( () => loadModule('./components/organisms/user.vue', options))
   },
   data() {
     return {
