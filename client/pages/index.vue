@@ -120,14 +120,23 @@
                     <div
                         class="member"
                     >
+                        <user
+                            style="width: 8vh; height: 8vh;"
+                        />
                     </div>
                     <div
                         class="member"
                     >
+                        <user
+                            style="width: 8vh; height: 8vh;"
+                        />
                     </div>
                     <div
                         class="member"
                     >
+                        <user
+                            style="width: 8vh; height: 8vh;"
+                        />
                     </div>
                 </div>
             </div>
@@ -307,7 +316,7 @@ module.exports = {
         min-height: 9vh;
         max-width: 81vw;
         margin: 0.5vh;
-        background-color: grey;
+        background-color: rgba(128, 128, 128, 0.263);
     }
 
     .title {
