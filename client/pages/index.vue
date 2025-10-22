@@ -296,7 +296,7 @@ module.exports = {
     }
 
     .boats {
-        background-color:#8CFFFE;
+        background-color:#8cfffd;
     }
 
     .maneuvers {
