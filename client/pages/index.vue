@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="page"
-    >
+    <div>
         <div
             class="menu boats"
         >
@@ -14,36 +12,36 @@
                 class="d-flex"
             >
                 <div
-                    class="menu-left overlay d-flex flex-column align-center justify-space-between"
+                    class="menu-left overlay d-flex flex-column align-center"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-plus
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-plus"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-card-bulleted-outline
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-card-bulleted-outline"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-image-multiple-outline
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-image-multiple-outline"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-delete
-                        </v-icon>
-                    </div>
+                        icon="mdi-delete"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
                 <div
                     class="content"
@@ -53,13 +51,13 @@
                 <div
                     class="next overlay d-flex flex-column align-center justify-space-around"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-menu-right
-                        </v-icon>
-                    </div>
+                        icon="mdi-menu-right"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
             </div>
         </div>
@@ -67,7 +65,7 @@
             class="menu crew"
         >
             <div
-                class="title overlay"
+                class="title"
             >
                 Equipe
             </div>
@@ -75,29 +73,29 @@
                 class="d-flex"
             >
                 <div
-                    class="menu-left overlay d-flex flex-column align-center justify-space-between"
+                    class="menu-left overlay d-flex flex-column align-center"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-plus
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-plus"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-account-box-plus-outline
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-account-box-plus-outline"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-delete
-                        </v-icon>
-                    </div>
+                        icon="mdi-delete"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
                 <div
                     class="content d-flex flex-column"
@@ -145,7 +143,7 @@
             class="menu maneuvers"
         >
             <div
-                class="title overlay"
+                class="title"
             >
                 Manoeuvres
             </div>
@@ -153,22 +151,22 @@
                 class="d-flex"
             >
                 <div
-                    class="menu-left overlay d-flex flex-column align-center justify-space-between"
+                    class="menu-left overlay d-flex flex-column align-center"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-plus
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-plus"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-delete
-                        </v-icon>
-                    </div>
+                        icon="mdi-delete"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
                 <div
                     class="content"
@@ -178,13 +176,13 @@
                 <div
                     class="next overlay d-flex flex-column align-center justify-space-around"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-menu-right
-                        </v-icon>
-                    </div>
+                        icon="mdi-menu-right"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
             </div>
         </div>
@@ -192,7 +190,7 @@
             class="menu maintenance"
         >
             <div
-                class="title overlay"
+                class="title"
             >
                 Maintenance
             </div>
@@ -200,22 +198,22 @@
                 class="d-flex"
             >
                 <div
-                    class="menu-left overlay d-flex flex-column align-center justify-space-between"
+                    class="menu-left overlay d-flex flex-column align-center"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-plus
-                        </v-icon>
-                    </div>
-                    <div
+                        icon="mdi-plus"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-delete
-                        </v-icon>
-                    </div>
+                        icon="mdi-delete"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
                 <div
                     class="content"
@@ -225,13 +223,13 @@
                 <div
                     class="next overlay d-flex flex-column align-center justify-space-around"
                 >
-                    <div
+                    <v-btn
                         class="button"
-                    >
-                        <v-icon>
-                            mdi-menu-right
-                        </v-icon>
-                    </div>
+                        icon="mdi-menu-right"
+                        variant="tonal"
+                        size="x-small"
+                        elevation="4"
+                    />
                 </div>
             </div>
         </div>
@@ -251,37 +249,27 @@ module.exports = {
 }
 </script>
 <style>
-    .page {
-        height: 100vh;
-        width: 100%;
-        background: radial-gradient(circle at bottom, #ffa27d, #bec4ff);
-        padding: 1vh;
-    }
-
     .overlay {
-        background: rgba(148, 148, 148, 0.543);
+        background: rgb(23, 0, 108);
     }
 
     .menu {
         height: 23vh;
-        border-bottom-left-radius: 1vh;
-        border-bottom-right-radius: 1vh;
-        background-color: #60DFE6;
+        border-radius: 1vh;
+        background-color:hsl(180, 100%, 82%);
         margin-bottom: 2vh;
-        outline: solid;
     }
 
     .menu-left {
-        height: 20vh;
         width: 10vw;
-        border-bottom-left-radius: 1vh;
+        border-radius: 1vh;
+        background: radial-gradient(circle at bottom, #021a28, hsl(180, 100%, 82%));
     }
 
     .button {
-        height: 25px;
-        width: 25px;
-        margin: 5px;
-        color: white;
+        margin: 3px;
+        color: rgba(255, 255, 255);
+        border: 2px;
     }
 
     .content
@@ -292,40 +280,25 @@ module.exports = {
 
     .next {
         height: 20vh;
-        border-bottom-right-radius: 1vh;
-    }
-
-    .boats {
-        background-color:#8cfffd;
-    }
-
-    .maneuvers {
-        background-color: #8CDDFF;
-    }
-
-    .maintenance {
-        background-color: #9AFCFB;
-        
-    }
-
-    .crew {
-        background-color: #8CFFD6;
+        border-radius: 1vh;
+        background: radial-gradient(circle at bottom, #021a28, hsl(180, 100%, 82%));
     }
 
     .member {
         min-height: 9vh;
         max-width: 81vw;
         margin: 0.5vh;
-        background-color: rgba(128, 128, 128, 0.263);
+        background-color: #021a2855;
+        border-radius: 1vh;
     }
 
     .title {
         height: 3vh;
         text-align: center;
         font-size: 2vh;
+        font-weight: bold;
         text-transform: uppercase;
-        font-weight: bolder;
-        color: white;
-        background-color: #607680;
+        color: #021a28;
+        font-family: 'Times New Roman', serif;
     }
 </style>

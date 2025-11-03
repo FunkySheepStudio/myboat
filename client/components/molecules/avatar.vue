@@ -3,8 +3,9 @@
         viewBox='0 0 360 360'
     >
         <hairs-back
-            :selected="hairsList[hairs].back"
+            :selected="hairsList[hairsIndex].back"
             :color = "hairsColor"
+            @click="NextHairs"
         />
         <skin
             :color = "skinColor"
@@ -38,10 +39,29 @@
             :color="glassesColor"
         />
         <hairs-front
-            :selected="hairsList[hairs].front"
+            :selected="hairsList[hairsIndex].front"
             :color = "hairsColor"
+            @click="NextHairs"
         />
     </svg>
+    <v-select
+        label="Select"
+        :items="['Hairs', 'Eyes', 'Eyebrows', 'Glasses', 'Mouth', 'FacialHairs', 'Accessories',]"
+        density="compact"
+    ></v-select>
+    <v-slider
+        v-model="hairsIndex"
+        :max="hairsList.length - 1"
+        :min="0"
+        :step="1"
+    />
+    <v-btn></v-btn>
+    <v-color-picker
+        hide-header
+        hide-inputs
+        mode="rgb"
+        style="background-color: #66666666; position: absolute; left: 50%; bottom: 5vh; transform: translate(-50%, 0%);"
+    />
 </template>
 <script>
 import Clothes from '../atoms/avatar/clothes.vue'
@@ -154,15 +174,294 @@ module.exports = {
   },
   data() {
     return {
+        hairsIndex: 0,
         hairsList : [
             {
                 back: 0,
                 front: 0
+            },
+            {
+                back: 0,
+                front: 1
+            },
+            {
+                back: 0,
+                front: 6
+            },
+            {
+                back: 0,
+                front: 7
+            },
+            {
+                back: 0,
+                front: 9
+            },
+            {
+                back: 0,
+                front: 10
+            },
+            {
+                back: 1,
+                front: 0
+            },
+            {
+                back: 1,
+                front: 1
+            },
+            {
+                back: 1,
+                front: 3
+            },
+            {
+                back: 1,
+                front: 4
+            },
+            {
+                back: 1,
+                front: 6
+            },
+            {
+                back: 1,
+                front: 7
+            },
+            {
+                back: 1,
+                front: 9
+            },
+            {
+                back: 1,
+                front: 10
+            },
+            {
+                back: 1,
+                front: 16
+            },
+            {
+                back: 2,
+                front: 0
+            },
+            {
+                back: 2,
+                front: 1
+            },
+            {
+                back: 2,
+                front: 3
+            },
+            {
+                back: 2,
+                front: 4
+            },
+            {
+                back: 2,
+                front: 6
+            },
+            {
+                back: 2,
+                front: 7
+            },
+            {
+                back: 2,
+                front: 9
+            },
+            {
+                back: 2,
+                front: 10
+            },
+            {
+                back: 2,
+                front: 16
+            },
+            {
+                back: 3,
+                front: 3
+            },
+            {
+                back: 3,
+                front: 4
+            },
+            {
+                back: 3,
+                front: 6
+            },
+            {
+                back: 3,
+                front: 7
+            },
+            {
+                back: 3,
+                front: 9
+            },
+            {
+                back: 3,
+                front: 10
+            },
+            {
+                back: 4,
+                front: 3
+            },
+            {
+                back: 4,
+                front: 4
+            },
+            {
+                back: 4,
+                front: 6
+            },
+            {
+                back: 4,
+                front: 7
+            },
+            {
+                back: 4,
+                front: 9
+            },
+            {
+                back: 4,
+                front: 10
+            },
+            {
+                back: 5,
+                front: 3
+            },
+            {
+                back: 5,
+                front: 4
+            },
+            {
+                back: 5,
+                front: 6
+            },
+            {
+                back: 5,
+                front: 9
+            },
+            {
+                back: 5,
+                front: 10
+            },
+            {
+                back: 6,
+                front: 3
+            },
+            {
+                back: 6,
+                front: 6
+            },
+            {
+                back: 6,
+                front: 9
+            },
+            {
+                back: 6,
+                front: 10
+            },
+            {
+                back: 7,
+                front: 3
+            },
+            {
+                back: 7,
+                front: 6
+            },
+            {
+                back: 7,
+                front: 9
+            },
+            {
+                back: 7,
+                front: 10
+            },
+            {
+                back: 8,
+                front: 0
+            },
+            {
+                back: 8,
+                front: 1
+            },
+            {
+                back: 8,
+                front: 2
+            },
+            {
+                back: 8,
+                front: 3
+            },
+            {
+                back: 8,
+                front: 4
+            },
+            {
+                back: 8,
+                front: 5
+            },
+            {
+                back: 8,
+                front: 6
+            },
+            {
+                back: 8,
+                front: 7
+            },
+            {
+                back: 8,
+                front: 8
+            },
+            {
+                back: 8,
+                front: 9
+            },
+            {
+                back: 8,
+                front: 10
+            },
+            {
+                back: 8,
+                front: 11
+            },
+            {
+                back: 8,
+                front: 12
+            },
+            {
+                back: 8,
+                front: 13
+            },
+            {
+                back: 8,
+                front: 14
+            },
+            {
+                back: 8,
+                front: 15
+            },
+            {
+                back: 8,
+                front: 16
+            },
+            {
+                back: 8,
+                front: 17
+            },
+            {
+                back: 8,
+                front: 18
+            },
+            {
+                back: 8,
+                front: 19
             }
         ]
     }
   },
   mounted () {
+  },
+  methods: {
+    NextHairs()
+    {
+        this.hairsIndex = (this.hairsIndex + 1) % this.hairsList.length
+    },
   }
 }
 </script>

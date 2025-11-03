@@ -1,5 +1,10 @@
 <template>
+  <div>
+    <v-text-field
+      label="Enter your name"
+    />
     <avatar/>
+  </div>
 </template>
 <script>
 module.exports = {
