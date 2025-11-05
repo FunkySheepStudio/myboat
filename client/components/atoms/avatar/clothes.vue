@@ -28,7 +28,7 @@ module.exports = {
         color: {
             type: String,
             default() {
-                return "#521541"
+                return "#f0504c"
             }
         }
   },

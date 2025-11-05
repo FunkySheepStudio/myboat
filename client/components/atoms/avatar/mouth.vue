@@ -29,7 +29,7 @@ module.exports = {
         selected: {
             type: Number,
             default() {
-                return 0
+                return 2
             }
         },
         color: {

@@ -19,7 +19,7 @@ module.exports = {
         color: {
             type: Number,
             default() {
-                return "#521541"
+                return "#DEBDC4"
             }
         }
   },

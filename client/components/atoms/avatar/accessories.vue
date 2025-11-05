@@ -20,7 +20,7 @@ module.exports = {
         color: {
             type: String,
             default() {
-                return "#ffffff"
+                return "#000000"
             }
         }
   },
