@@ -1,10 +1,12 @@
 <template>
+  <div>
     <avatar/>
+  </div>
 </template>
 <script>
 module.exports = {
   components: {
-    'avatar': Vue.defineAsyncComponent( () => loadModule('./components/molecules/avatar.vue', options))
+    'avatar': Vue.defineAsyncComponent( () => loadModule('./components/organisms/avatar.vue', options))
   },
   data() {
     return {

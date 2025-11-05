@@ -46,17 +46,18 @@
         v-if="editing"
     >
         <div
-            class="d-flex flex-wrap"
+            class="d-flex flex-wrap justify-center"
         >
             <v-btn
                 class="parts"
                 @click="selected='skin'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
                         viewBox='0 0 360 360'
-                        
                     >
                         <skin/>
                     </svg>
@@ -66,6 +67,8 @@
                 class="parts"
                 @click="avatar.hairs.index = (avatar.hairs.index + 1) % avatar.hairs.list.length; selected='hairs'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -81,6 +84,8 @@
                 class="parts"
                 @click="avatar.eyes.index = (avatar.eyes.index + 1) % avatar.eyes.length; selected='eyes'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -95,6 +100,8 @@
                 class="parts"
                 @click="avatar.eyebrows.index = (avatar.eyebrows.index + 1) % avatar.eyebrows.length; selected='eyebrows'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -109,6 +116,8 @@
                 class="parts"
                 @click="avatar.glasses.index = (avatar.glasses.index + 1) % avatar.glasses.length; selected='glasses'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -123,6 +132,8 @@
                 class="parts"
                 @click="avatar.mouth.index = (avatar.mouth.index + 1) % avatar.mouth.length; selected='mouth'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -137,6 +148,8 @@
                 class="parts"
                 @click="avatar.facialHairs.index = (avatar.facialHairs.index + 1) % avatar.facialHairs.length; selected='facialHairs'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -151,6 +164,8 @@
                 class="parts"
                 @click="avatar.clothes.index = (avatar.clothes.index + 1) % avatar.clothes.length; selected='clothes'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -165,6 +180,8 @@
                 class="parts"
                 @click="avatar.accessories.index = (avatar.accessories.index + 1) % avatar.accessories.length; selected='accessories'"
                 icon
+                variant="tonal"
+                elevation="4"
             >   
                 <v-icon>
                     <svg
@@ -176,19 +193,16 @@
                 </v-icon>
             </v-btn>
         </div>
-        <!--<v-slider
-            v-model="hairsIndex"
-            :max="hairsList.length - 1"
-            :min="0"
-            :step="1"
-        />
-        <input type="color">-->
-        <v-btn
-            v-for="(color, index) in avatar[selected].colors"
-            @click="avatar[selected].color = index"
-            :color
-            icon
-        />
+        <div
+            class="d-flex flex-wrap justify-center"
+        >
+            <v-btn
+                v-for="(color, index) in avatar[selected].colors"
+                @click="avatar[selected].color = index"
+                :color
+                icon
+            />
+        </div>
     </div>
 </template>
 <script>
@@ -578,5 +592,10 @@ module.exports = {
 <style>
 .parts {
     margin: 1px;
+}
+
+.parts .v-icon
+{
+    transform: scale(1.5);
 }
 </style>
