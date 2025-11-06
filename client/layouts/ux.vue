@@ -1,4 +1,7 @@
 <template>
+  <div
+    class="background"
+  ></div>
   <router-view
     class="page"
   />
@@ -16,10 +19,18 @@ module.exports = {
 }
 </script>
 <style>
-.page {
+.background {
+  z-index: -1;
+  position: fixed;
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(circle at bottom, #021927, #00DAE5);
   padding: 1vh;
+  background-image: url("./images/back.png"), radial-gradient(circle at bottom, #021927, #00DAE5);
+  background-position: 50% 150%;
+  background-size: contain;
+}
+
+.page {
+    padding: 1vh;
 }
 </style>
