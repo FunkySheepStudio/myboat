@@ -19,7 +19,7 @@ module.exports = {
 .page {
   height: 100vh;
   width: 100vw;
-  background: radial-gradient(circle at bottom, #021a28, #b9d8de);
+  background: radial-gradient(circle at bottom, #021927, #00DAE5);
   padding: 1vh;
 }
 </style>

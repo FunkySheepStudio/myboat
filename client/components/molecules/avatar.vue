@@ -8,13 +8,16 @@
                     <stop offset="0%" 
                         style="stop-color:#000000; stop-opacity:1" 
                     />
+                    <stop offset="25%" 
+                        style="stop-color:#000000; stop-opacity:1" 
+                    />
                     <stop offset="100%"
                         :style="'stop-color:' + avatar.background.colors[avatar.background.color] +'; stop-opacity:1'" 
                     />
                 </radialGradient>
             </defs>
 
-            <rect x="0" y="0" width="360" height="360" rx="50" ry="50" fill="url(#grad1)" stroke="#00000000" stroke-width="10"/>
+            <rect x="10" y="10" width="345" height="345" rx="50" ry="50" fill="url(#grad1)" stroke="#00000000" stroke-width="10"/>
 
             <hairs-back
                 :selected="avatar.hairs.list[avatar.hairs.index].back"
@@ -55,6 +58,8 @@
                 :selected="avatar.hairs.list[avatar.hairs.index].front"
                 :color = avatar.hairs.colors[avatar.hairs.color]
             />
+
+            <rect x="10" y="10" width="345" height="345" rx="50" ry="50" fill="#00000000" stroke="#000000" stroke-width="10"/>
     </svg>
     <div
         v-if="editing"
@@ -247,7 +252,7 @@ module.exports = {
         avatar: {
             background: {
                 color: 0,
-                colors: ["#0ceaf8","#ecbcb4","#d1a3a4","#a1665e","#503335","#592f2a"]
+                colors: ["#F2FF49","#FFADAD","#FF4242","#FA9EFA", "#817CDE", "#C9EE96"]
             },
             skin: {
                 color: 0,
