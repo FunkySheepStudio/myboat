@@ -5,8 +5,12 @@
             <defs>
                 <!-- Dégradé radial -->
                 <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" style="stop-color:#000; stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#0ff; stop-opacity:1" />
+                    <stop offset="0%" 
+                        style="stop-color:#000000; stop-opacity:1" 
+                    />
+                    <stop offset="100%"
+                        :style="'stop-color:' + avatar.background.colors[avatar.background.color] +'; stop-opacity:1'" 
+                    />
                 </radialGradient>
             </defs>
 
@@ -241,6 +245,10 @@ module.exports = {
     return {
         selected: 'skin',
         avatar: {
+            background: {
+                color: 0,
+                colors: ["#0ceaf8","#ecbcb4","#d1a3a4","#a1665e","#503335","#592f2a"]
+            },
             skin: {
                 color: 0,
                 colors: ["#c58c85","#ecbcb4","#d1a3a4","#a1665e","#503335","#592f2a"]
@@ -590,12 +598,14 @@ module.exports = {
     }
   },
   mounted () {
+    this.avatar.background.color = Math.floor(Math.random() * this.avatar.background.colors.length)
     this.avatar.hairs.index = Math.floor(Math.random() * this.avatar.hairs.list.length)
     this.avatar.hairs.color = Math.floor(Math.random() * this.avatar.hairs.colors.length)
     this.avatar.skin.color = Math.floor(Math.random() * this.avatar.skin.colors.length)
+    this.avatar.eyes.index = Math.floor(Math.random() * this.avatar.eyes.length)
     this.avatar.eyes.color = Math.floor(Math.random() * this.avatar.eyes.colors.length)
-    this.avatar.eyebrows.index = Math.floor(Math.random() * this.avatar.eyes.eyebrows.length)
-    this.avatar.eyebrows.color = Math.floor(Math.random() * this.avatar.eyebrows.colors)
+    this.avatar.eyebrows.index = Math.floor(Math.random() * this.avatar.eyebrows.length)
+    this.avatar.eyebrows.color = Math.floor(Math.random() * this.avatar.eyebrows.colors.length)
     this.avatar.accessories.index = Math.floor(Math.random() * this.avatar.accessories.length)
     this.avatar.accessories.color = Math.floor(Math.random() * this.avatar.accessories.colors.length)
     this.avatar.mouth.index = Math.floor(Math.random() * this.avatar.mouth.length)
