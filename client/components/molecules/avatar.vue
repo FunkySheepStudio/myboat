@@ -1,7 +1,17 @@
 <template>
     <svg
         viewBox='0 0 360 360'
-    >
+    >           
+            <defs>
+                <!-- Dégradé radial -->
+                <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#000; stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#0ff; stop-opacity:1" />
+                </radialGradient>
+            </defs>
+
+            <rect x="0" y="0" width="360" height="360" rx="50" ry="50" fill="url(#grad1)" stroke="#00000000" stroke-width="10"/>
+
             <hairs-back
                 :selected="avatar.hairs.list[avatar.hairs.index].back"
                 :color = avatar.hairs.colors[avatar.hairs.color]
@@ -580,6 +590,22 @@ module.exports = {
     }
   },
   mounted () {
+    this.avatar.hairs.index = Math.floor(Math.random() * this.avatar.hairs.list.length)
+    this.avatar.hairs.color = Math.floor(Math.random() * this.avatar.hairs.colors.length)
+    this.avatar.skin.color = Math.floor(Math.random() * this.avatar.skin.colors.length)
+    this.avatar.eyes.color = Math.floor(Math.random() * this.avatar.eyes.colors.length)
+    this.avatar.eyebrows.index = Math.floor(Math.random() * this.avatar.eyes.eyebrows.length)
+    this.avatar.eyebrows.color = Math.floor(Math.random() * this.avatar.eyebrows.colors)
+    this.avatar.accessories.index = Math.floor(Math.random() * this.avatar.accessories.length)
+    this.avatar.accessories.color = Math.floor(Math.random() * this.avatar.accessories.colors.length)
+    this.avatar.mouth.index = Math.floor(Math.random() * this.avatar.mouth.length)
+    this.avatar.mouth.color = Math.floor(Math.random() * this.avatar.mouth.colors.length)
+    this.avatar.clothes.index = Math.floor(Math.random() * this.avatar.clothes.length)
+    this.avatar.clothes.color = Math.floor(Math.random() * this.avatar.clothes.colors.length)
+    this.avatar.facialHairs.index = Math.floor(Math.random() * this.avatar.facialHairs.length)
+    this.avatar.facialHairs.color = Math.floor(Math.random() * this.avatar.facialHairs.colors.length)
+    this.avatar.glasses.index = Math.floor(Math.random() * this.avatar.glasses.length)
+    this.avatar.glasses.color = Math.floor(Math.random() * this.avatar.glasses.colors.length)
   },
   methods: {
     NextHairs()

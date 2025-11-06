@@ -11,7 +11,7 @@
 <script>
 module.exports = {
   components: {
-    'org-avatar': Vue.defineAsyncComponent( () => loadModule('./components/organisms/avatar.vue', options))
+    'org-avatar': Vue.defineAsyncComponent( () => loadModule('./components/molecules/avatar.vue', options))
   },
   data() {
     return {
