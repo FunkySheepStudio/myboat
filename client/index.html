@@ -18,6 +18,7 @@
 <script src="./libs/vuetify.min.js"></script>
 <script src="./libs/vue-router.global.js"></script>
 <script src="./libs/html5-qrcode.js"></script>
+<script src="./libs/maker.js"></script>
 <script src="./modules/store.js"></script>
 
 <script>
@@ -31,6 +32,9 @@
   const vuetify = Vuetify.createVuetify()
   
   const { createRouter, createWebHistory } = VueRouter
+
+  const { MarkerArea, ArrowMarker, MarkerView, Renderer } = markerjs3;
+
 
   const options = {
     moduleCache: {
@@ -59,6 +63,7 @@
       { path: '/myboats', name: 'My Boats', component: () => loadModule('/pages/myboats.vue', options) },
       { path: '/maneuvers', name: 'The Maneuvers', component: () => loadModule('/pages/maneuvers.vue', options) },
       { path: '/account', name: 'Account', component: () => loadModule('/pages/account.vue', options) },
+      { path: '/sandbox', name: 'Sandbox', component: () => loadModule('/pages/sandbox.vue', options) },
       { path: '/', name: 'My Boats', component: () => loadModule('/pages/index.vue', options) }
     ],
   })
